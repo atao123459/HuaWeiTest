@@ -38,7 +38,7 @@ public class SameStr {
                     valid++;
                 }
             }
-            while(right - left >= str2.length()){
+            while(right - left >= str2.length()){//窗口大于等于str2
                 if (valid == need.size()){
                     list.add(left);//子串left下标加入集合
                 }

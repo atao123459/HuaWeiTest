@@ -37,7 +37,7 @@ public class AddURL {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
-        if(s.length() == 1){
+        if(s.length() == 1 || s.length() == 0){
             System.out.println("/");
             return;
         }
@@ -48,25 +48,12 @@ public class AddURL {
             return;
         }
         StringBuilder sb = new StringBuilder();
-        char[] charUrl1 = url1.toCharArray();
-        char[] charUrl2 = url2.toCharArray();
-        for(int i = 0;i < charUrl1.length;i++){
-            char c = charUrl1[i];
-            if(c == '/' && i != 0){
-                continue;
-            }else {
-                sb.append(c);
-            }
-        }
-        sb.append('/');
-        for(int i = 0;i < charUrl2.length;i++){
-            char c = charUrl2[i];
-            if(c == '/' ){
-                continue;
-            }else {
-                sb.append(c);
-            }
-        }
-        System.out.println(sb);
+        sb.append("/");
+        sb.append(url1);
+        sb.append("/");
+        sb.append(url2);
+        String res = sb.toString();
+        //使用正则表达式 /+ 找到重复出现的斜杠
+        System.out.println(res.replaceAll("/+","/"));
     }
 }

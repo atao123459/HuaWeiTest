@@ -1,5 +1,3 @@
-import com.sun.source.tree.UsesTree;
-
 import java.util.*;
 
 /*
@@ -22,7 +20,7 @@ public class Paint {
         }
         Arrays.sort(nums);
         int count = 0;
-        int[] s = new int[num];
+        int[] s = new int[num];//用来标记被染色的数字
         for(int i = 0;i < nums.length;i++){
             if(s[i] > 0){
                 continue;
