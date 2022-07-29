@@ -35,15 +35,13 @@ public class DivideStrByN {
                 if(s.length() < n){
                     int c = n - s.length();
                     sb.append(s);
-                    for(int i = 0;i < c;i++){
-                        sb.append("0");
-                    }
+                    sb.append("0".repeat(c));
                     res.add(sb.toString());
                 }else if(s.length() > n){
                     char[] chars = s.toCharArray();
                     int c = s.length() - n;
                     for(int i = 1;i <= chars.length;i++){
-                        if(i % n == 0 ){
+                        if(i % n == 0 ){//字符串长度比n大时，判断当前位置是否到达n，到达的话直接加入sb然后加入逗号
                             sb.append(chars[i - 1]);
                             sb.append(",");
                             count++;
@@ -57,7 +55,7 @@ public class DivideStrByN {
                         size++;
                     }
                     res.add(sb.toString());
-                }else {
+                }else {//长度等于n
                     sb.append(s);
                     res.add(sb.toString());
                 }

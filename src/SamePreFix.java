@@ -3,21 +3,44 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+/*
+.输入一些单词 再输入一个前缀 输出所有前缀开始的单词 不包括相同的单词 按字典序排序
+
+input:
+asd as as,asD     // 单词
+a                 // 前缀
+
+output:
+as asD asd
+注：任何标点符号视为分界 即don't 视为单词 don 和 t
+ */
 public class SamePreFix {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        List<String> list = new ArrayList<>();
-        String str = sc.nextLine();
-        String[] words = str.split(" ");
-        char prefix = sc.nextLine().charAt(0);
-        for(String s : words){
-            if(s.startsWith(String.valueOf(prefix))){
-                list.add(s);
+        while(sc.hasNextLine()) {
+            List<String> list = new ArrayList<>();
+            String str = sc.nextLine();
+            String[] words = str.split(" ");
+            char prefix = sc.nextLine().charAt(0);
+            for (String s : words) {
+                if (s.contains("'")) {
+                    String[] spilt = s.split("'");
+                    for (int i = 0; i < spilt.length; i++) {
+                        if (spilt[i].startsWith(String.valueOf(prefix))) {
+                            list.add(spilt[i]);
+                        }
+                    }
+                } else {
+                    if (s.startsWith(String.valueOf(prefix))) {
+                        list.add(s);
+                    }
+                }
             }
-        }
 //        list.sort(String::compareTo);
-        for (String s : list) {
-            System.out.println(s);
+            Collections.sort(list);
+            for (String s : list) {
+                System.out.println(s);
+            }
         }
     }
 }
