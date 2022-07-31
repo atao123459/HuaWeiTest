@@ -19,42 +19,70 @@ import java.util.*;
 小明身高100，班级学生10个，身高分别为95 96 97 98 99 101 102 103 104 105，按身高差排序后结果为：99 101 98 102 97 103 96 104 95 105。
  */
 public class NearHeight {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        int height = sc.nextInt();
+//        int num = sc.nextInt();
+//        List<Integer> list = new ArrayList<>();
+//        Map<Integer,Integer> map = new LinkedHashMap<>();
+//        for (int i = 0; i < num; i++) {
+//            list.add(sc.nextInt());
+//        }
+//        for(int i : list){
+//            //key是身高，value是绝对值
+//            map.put(i,Math.abs(height - i));
+//        }
+//        //可以通过这个操作把map里的元素保存到list中,然后排序
+//        List<Map.Entry<Integer,Integer>> entryList = new ArrayList<>(map.entrySet());
+//        entryList.sort((o1, o2) -> {
+//            //身高相同时用绝对值排序
+//            if (o1.getKey() - o2.getKey() == 0) {
+//                return o1.getValue().compareTo(o2.getValue());
+//            }
+//            //按身高升序
+//            return o1.getValue() - o2.getValue();
+//        });
+//        //对结果再排一次序，保证较小的元素在前面
+//        entryList.sort((o1,o2) -> {
+//           if(o1.getValue().equals(o2.getValue())){
+//               if(o1.getKey() > o2.getKey()){
+//                   return 1;
+//               }else {
+//                   return -1;
+//               }
+//           }
+//           return 0;
+//        });
+//        for (Map.Entry<Integer, Integer> entry : entryList) {
+//            System.out.print(entry.getKey() + " ");
+//        }
+//    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int height = sc.nextInt();
-        int num = sc.nextInt();
-        List<Integer> list = new ArrayList<>();
-        Map<Integer,Integer> map = new LinkedHashMap<>();
-        for (int i = 0; i < num; i++) {
-            list.add(sc.nextInt());
-        }
-        for(int i : list){
-            //key是身高，value是绝对值
-            map.put(i,Math.abs(height - i));
-        }
-        //可以通过这个操作把map里的元素保存到list中,然后排序
-        List<Map.Entry<Integer,Integer>> entryList = new ArrayList<>(map.entrySet());
-        entryList.sort((o1, o2) -> {
-            //身高相同时用绝对值排序
-            if (o1.getKey() - o2.getKey() == 0) {
-                return o1.getValue().compareTo(o2.getValue());
+        while(sc.hasNextLine()){
+//            String[] height = sc.nextLine().split(" ");
+//            sc.nextLine();
+//            int h = Integer.parseInt(height[0]);
+//            int num = Integer.parseInt(height[1]);
+            int h = sc.nextInt();
+            int num = sc.nextInt();
+            List<Integer> list = new ArrayList<>();
+            for(int i = 0;i < num;i++){
+                list.add(sc.nextInt());
             }
-            //按身高升序
-            return o1.getValue() - o2.getValue();
-        });
-        //对结果再排一次序，保证较小的元素在前面
-        entryList.sort((o1,o2) -> {
-           if(o1.getValue().equals(o2.getValue())){
-               if(o1.getKey() > o2.getKey()){
-                   return 1;
-               }else {
-                   return -1;
+            sc.nextLine();
+            list.sort((o1,o2) -> {
+                int h1 = Math.abs(h - o1);
+                int h2 = Math.abs(h - o2);
+               if(h1 == h2){
+                   return o1 - o2;
                }
-           }
-           return 0;
-        });
-        for (Map.Entry<Integer, Integer> entry : entryList) {
-            System.out.print(entry.getKey() + " ");
+               return h1 - h2;
+            });
+            for(int i : list){
+                System.out.print(i + " ");
+            }
         }
     }
 }

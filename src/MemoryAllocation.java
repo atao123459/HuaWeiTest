@@ -14,6 +14,7 @@ public class MemoryAllocation {
             Arrays.fill(memory,0);
             int start = 0;
             Map<Integer,Integer> map = new HashMap<>();
+            List<Integer> list = new ArrayList<>();
             for(String[] order : orders){
                 String command = order[0];
                 if(command.equals("REQUEST")){
@@ -24,7 +25,8 @@ public class MemoryAllocation {
                     }
                     int index = start;
                     map.put(index,resource);
-                    while(index < resource){
+                    list.add(index);
+                    while(index < resource + index){
                         if(memory[index] ==0 ){
                             memory[index] = index;
                         }
@@ -41,11 +43,14 @@ public class MemoryAllocation {
                     for(int i = startR;i < release;i++){
                         memory[i] = 0;
                     }
-                    start = 0;
+//                    start = 0;
                 }
             }
-            for(int key : map.keySet()){
-                System.out.println(key);
+//            for(int key : map.keySet()){
+//                System.out.println(key);
+//            }
+            for(int index : list){
+                System.out.println(index);
             }
         }
     }
