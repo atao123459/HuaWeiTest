@@ -73,10 +73,10 @@ public class ShrinkString {
             Map<Character,Integer> map = new HashMap<>();
             for(int i = 0;i < str.length();i++){
                 char c = str.charAt(i);
-                if(!Character.isDigit(c) || !Character.isLetter(c) || Character.isUpperCase(c)){
-                    System.out.println("!error");
-                    return;
-                }
+//                if(!Character.isDigit(c) || !Character.isLetter(c) || Character.isUpperCase(c)){
+//                    System.out.println("!error");
+//                    return;
+//                }
                 map.put(c,map.getOrDefault(c,0) + 1);
             }
             for(Map.Entry<Character,Integer> entry : map.entrySet()){

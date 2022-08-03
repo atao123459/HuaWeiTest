@@ -67,6 +67,7 @@ import java.util.*;
 既是顺子又是同花，输出1，同花顺
  */
 public class Texas {
+    static List<String> test = new ArrayList<>();
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         List<String> list = new ArrayList<>();
@@ -77,6 +78,7 @@ public class Texas {
                 int type = getCardType(list);
                 System.out.println(type);
             }
+            System.out.println(test);
         }
     }
 
@@ -84,7 +86,6 @@ public class Texas {
         List<String> numList = new ArrayList<>();
         Set<String> numSet = new HashSet<>();//数字set判断是否有多个不同的数字
         Set<String> colorSet = new HashSet<>();//颜色set判断是否有多个不同的颜色
-
         //数字和颜色存入集合中
         for (String s : list) {
             String num = s.split(" ")[0];

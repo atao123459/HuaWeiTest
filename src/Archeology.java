@@ -38,20 +38,50 @@ public class Archeology {
         while (sc.hasNextLine()) {
             int n  = Integer.parseInt(sc.nextLine());
 //            sc.nextLine();
-            String[] str = sc.nextLine().split(" ");
-            List<String> items = new ArrayList<>(Arrays.asList(str));
-            Set<String> set = new HashSet<>();
-            combine(items, new StringBuilder(), set);
-            Iterator<String> iterator = set.iterator();
+            String str = sc.nextLine();
+//            List<String> items = new ArrayList<>(Arrays.asList(str));
+//            Set<String> set = new HashSet<>();
+//            combine(items, new StringBuilder(), set);
+//            Iterator<String> iterator = set.iterator();
+//            List<String> res = new ArrayList<>();
+//            while(iterator.hasNext()){
+//                res.add(iterator.next());
+//            }
+//            res.sort((o1,o2) -> o1.compareTo(o2));
+//            for(String s : res){
+//                System.out.println(s);
+//            }
+
+            //方法2 排列组合加回溯
+            String s = str.replace(" ", "");
+            char[] chars = s.toCharArray();
             List<String> res = new ArrayList<>();
-            while(iterator.hasNext()){
-                res.add(iterator.next());
-            }
-            res.sort((o1,o2) -> o1.compareTo(o2));
-            for(String s : res){
-                System.out.println(s);
-            }
+            backTrack(chars.length,res,chars,0);
+            System.out.println(res);
         }
+    }
+
+    public static void backTrack(int n,List<String> res,char[] chars,int first){
+        if(first == n){
+            res.add(String.valueOf(chars));
+            return;
+        }
+        Set<Character> set = new HashSet<>();
+        for(int i = first;i < n;i++){
+            if(set.contains(chars[i])){
+                continue;
+            }
+            set.add(chars[i]);
+            swap(chars,first,i);
+            backTrack(n,res,chars,first + 1);
+            swap(chars,first,i);
+        }
+    }
+
+    public static void swap(char[] chars,int i,int j){
+        char temp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = temp;
     }
 
     public static void combine(List<String> str, StringBuilder sb, Set<String> set) {

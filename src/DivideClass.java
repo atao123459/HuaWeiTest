@@ -64,12 +64,20 @@ public class DivideClass {
         }
         list1.sort(String::compareTo);
         list2.sort(String::compareTo);
-        for (String s : list1) {
-            System.out.print(s + " ");
+        for (int i = 0; i < list1.size();i++) {
+            if(i == list1.size() - 1){
+                System.out.print(list1.get(i));
+            }else {
+                System.out.print(list1.get(i) + " ");
+            }
         }
         System.out.println();
-        for (String s : list2) {
-            System.out.print(s + " ");
+        for (int i = 0; i < list2.size();i++) {
+            if(i == list1.size() - 1){
+                System.out.print(list2.get(i));
+            }else {
+                System.out.print(list2.get(i) + " ");
+            }
         }
     }
 }
