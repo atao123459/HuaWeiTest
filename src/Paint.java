@@ -26,7 +26,7 @@ public class Paint {
                 continue;
             }else {
                 for (int j = i; j < nums.length; j++) {
-                    if(nums[i] % nums[j] == 0){
+                    if(nums[j] % nums[i] == 0){
                         s[j]++;
                     }
                 }

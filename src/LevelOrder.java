@@ -2,6 +2,9 @@ import java.util.Scanner;
 
 /*
 输入中序和后序遍历，输出层次遍历
+
+输入：
+CBEFDA CBAEDF
  */
 public class LevelOrder {
     public static void main(String[] args) {

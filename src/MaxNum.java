@@ -14,9 +14,9 @@ public class MaxNum {
             for(String s : arr){
                 heap.offer(s);
             }
-            String res = "";
+            StringBuilder res = new StringBuilder();
             while(heap.size() > 0){
-                res += heap.poll();
+                res.append(heap.poll());
             }
             System.out.println(res);
         }
