@@ -57,7 +57,9 @@ public class Archeology {
             char[] chars = s.toCharArray();
             List<String> res = new ArrayList<>();
             backTrack(chars.length,res,chars,0);
-            System.out.println(res);
+            for(String word : res){
+                System.out.println(word);
+            }
         }
     }
 

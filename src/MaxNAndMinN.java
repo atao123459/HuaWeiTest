@@ -28,37 +28,26 @@ import java.util.*;
 public class MaxNAndMinN {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        while(sc.hasNextLine()){
-            int nums = sc.nextInt();
-            sc.nextLine();
-            Set<Integer> set = new HashSet<>();
-            for(int i = 0;i < nums;i++){
-                set.add(sc.nextInt());
+        while (sc.hasNextInt()) {
+            int m = sc.nextInt();
+            List<Integer> list = new ArrayList<>();
+            for (int i = 0; i < m; i++) {
+                int num = sc.nextInt();
+                if (!list.contains(num)) {
+                    list.add(num);
+                }
             }
-            sc.nextLine();
-            int N = sc.nextInt();
-            if(N * 2 > set.size()){
+            int n = sc.nextInt();
+            Collections.sort(list);
+            if(list.size() < n * 2){
                 System.out.println(-1);
                 return;
             }
-            if(N == 0 || set.size() == 0){
-                System.out.println(0);
-                return;
+            int res = 0;
+            for (int i = 0; i < n; i++) {
+                res += list.get(i) + list.get(list.size() - i - 1);
             }
-            Iterator<Integer> iterator = set.iterator();
-            int[] num = new int[set.size()];
-            int index = 0;
-            while(iterator.hasNext()){
-                num[index++] = iterator.next();
-            }
-            Arrays.sort(num);
-            int sum = 0;
-            for(int i = 0;i < N;i++){
-                sum += num[i];//前N个最小值
-                sum += num[num.length - 1 - i];//后N个最大值
-            }
-            System.out.println(sum);
+            System.out.println(res);
         }
-        sc.close();
     }
 }

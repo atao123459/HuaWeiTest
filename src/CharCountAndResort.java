@@ -32,10 +32,28 @@ public class CharCountAndResort {
             map.put(c,map.getOrDefault(c,0) + 1);
         }
         List<Map.Entry<Character,Integer>> entryList = new ArrayList<>(map.entrySet());
-        entryList.sort((o1,o2) -> o2.getValue() - o1.getValue());
+        entryList.sort((o1,o2) -> {
+            if(o1.getValue().equals(o2.getValue())){
+                Character key1 = o1.getKey();
+                Character key2 = o2.getKey();
+                //字符asc码与A相减大于25为小写，越往后差越大
+                //两个小写与A比较
+                if(key1 - 'A' > 25 && key2 - 'A' > 25){
+                    return key1 - key2;
+                }
+                //字符asc码与A相减小于26为小写,越往后差越大
+                //两个大写与A比较
+                if(key1 - 'A' < 26 && key2 - 'A' < 26){
+                    return key1 - key2;
+                }
+                //既有小写又有大写
+                return -(key1 - key2);
+            }
+            return o2.getValue() - o1.getValue();
+        });
         StringBuilder sb = new StringBuilder();
         for(Map.Entry<Character,Integer> entry : entryList){
-            sb.append(entry.getKey()).append(":").append(entry.getValue()).append(" ");
+            sb.append(entry.getKey()).append(":").append(entry.getValue()).append(";");
         }
         sb.deleteCharAt(sb.length() - 1).append(";");
         System.out.println(sb);
