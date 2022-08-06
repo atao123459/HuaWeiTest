@@ -61,7 +61,7 @@ public class JobFair {
                 arr[i][1] = sc.nextInt();
             }
             //对数组先按照开始时间排序
-            Arrays.sort(arr, Comparator.comparing(o1 -> o1[0]));
+            Arrays.sort(arr, (o1,o2) -> o1[0] - o2[0]);
             Deque<int[]> queue = new LinkedList<>();
             //队列中第一个元素为结束时间，第二个为面试的人数，初始为1，相当于存的是面试官
             queue.offer(new int[]{arr[0][1], 1});
@@ -77,7 +77,7 @@ public class JobFair {
                     }
                 }
                 //队列中没有符合要求的面试官就创建新的加入
-                if (!flag) {
+                if (!flag) { 
                     queue.offer(new int[]{arr[i][1],1});
                 }
             }

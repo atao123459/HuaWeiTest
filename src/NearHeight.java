@@ -80,8 +80,12 @@ public class NearHeight {
                }
                return h1 - h2;
             });
-            for(int i : list){
-                System.out.print(i + " ");
+            for(int i = 0;i < list.size();i++){
+                if(i == list.size() - 1){
+                    System.out.print(list.get(i));
+                }else {
+                    System.out.print(list.get(i) + " ");
+                }
             }
         }
     }

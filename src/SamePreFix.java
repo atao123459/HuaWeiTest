@@ -26,20 +26,24 @@ public class SamePreFix {
                 if (s.contains("'")) {
                     String[] spilt = s.split("'");
                     for (int i = 0; i < spilt.length; i++) {
-                        if (spilt[i].startsWith(String.valueOf(prefix))) {
+                        if (spilt[i].startsWith(String.valueOf(prefix)) && !list.contains(spilt[i])) {
                             list.add(spilt[i]);
                         }
                     }
                 } else {
-                    if (s.startsWith(String.valueOf(prefix))) {
+                    if (s.startsWith(String.valueOf(prefix)) && !list.contains(s)) {
                         list.add(s);
                     }
                 }
             }
 //        list.sort(String::compareTo);
             Collections.sort(list);
-            for (String s : list) {
-                System.out.println(s);
+            for (int i = 0;i < list.size();i++) {
+                if(i == list.size() - 1){
+                    System.out.println(list.get(i));
+                }else {
+                    System.out.print(list.get(i) + " ");
+                }
             }
         }
     }
