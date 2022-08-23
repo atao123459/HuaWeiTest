@@ -82,6 +82,9 @@ public class Test {
 //            }
             String str = "()11245(1243sddg456)";
             System.out.println(str.replaceAll("\\(", "( ").replaceAll("\\)", " )"));
+            String s1 = "aa";
+            String s2 = "bb";
+            System.out.println(s1 == s2);
         }
     }
 
