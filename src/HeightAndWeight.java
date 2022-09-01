@@ -45,8 +45,8 @@ public class HeightAndWeight {
             list.add(student);
         }
 
-        Collections.sort(list,(o1,o2) ->{
-            if(o1.height == o2.height){
+        list.sort((o1, o2) -> {
+            if (o1.height == o2.height) {
                 return o1.weight - o2.weight;
             }
             return o1.height - o2.height;
@@ -58,37 +58,13 @@ public class HeightAndWeight {
 }
 
 class Student{
-    int height = 0;
-    int weight = 0;
-    int code = 0;
+    int height;
+    int weight;
+    int code;
 
     public Student(int height, int weight,int code) {
         this.height = height;
         this.weight = weight;
         this.code = code;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int coe) {
-        this.code = coe;
     }
 }
